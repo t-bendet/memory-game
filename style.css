@@ -50,12 +50,16 @@ body {
 }
 .board {
   grid-area: board;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .card {
-  height: 50px;
-  width: 50px;
+  height: 100px;
+  width: 100px;
   margin: 1rem;
+  background-color: black;
+  background-image: red;
 }
 
 /* ***************************************************************
