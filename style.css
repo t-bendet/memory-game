@@ -33,15 +33,29 @@ body {
 .game {
   display: grid;
   height: 100%;
+  grid-template-areas:
+    "timer counter"
+    "board board";
+  grid-template-rows: 150px 1fr;
+  background-color: #0053ba;
+  gap: 1rem;
 }
 .timer {
-  /*  */
+  grid-area: timer;
+  background-color: yellowgreen;
 }
 .counter {
-  /*  */
+  grid-area: counter;
+  background-color: red;
 }
 .board {
-  /*  */
+  grid-area: board;
+}
+
+.card {
+  height: 50px;
+  width: 50px;
+  margin: 1rem;
 }
 
 /* ***************************************************************
