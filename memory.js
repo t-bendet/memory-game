@@ -10,17 +10,14 @@ const gameData = {
   dataCounter: 0,
   dataWrong: 0,
   dataRight: 0,
-  dataWin: false,
   dataDeckSize: 0,
   dataCardFlip: {
     count: 0,
     firstCard: {
-      cardId: undefined,
       cardClass: undefined,
       cardLocator: undefined,
     },
     secondCard: {
-      cardId: undefined,
       cardClass: undefined,
       cardLocator: undefined,
     },
@@ -44,9 +41,8 @@ function initGameBoard(num, deckTheme) {
   body.firstElementChild.remove();
   for (const card of deck) {
     let div = document.createElement("div");
-    div.setAttribute("data-id", card.id);
     div.setAttribute("data-cls", card.cardClass);
-    div.setAttribute("data-clickable", true);
+    div.setAttribute("data-clickable", "true");
     div.classList.add(`${card.cardClass}`);
     div.classList.add("card");
     div.classList.add("card-back");
@@ -70,7 +66,6 @@ function randomizeCardData(setNumber, setTheme) {
   for (let i = 0; i < setNumber; i++) {
     let imgArrIndex = Math.floor(Math.random() * cardImg.length);
     let cardObj = {
-      id: i,
       cardClass: cardImg[imgArrIndex],
     };
     cardsArr.push(cardObj);
@@ -89,46 +84,55 @@ function initGamePlay(gameData) {}
 
 boardSelector.addEventListener("click", cardListner);
 function cardListner(e) {
-  if (e.target.classList.contains("card") && e.target.dataset.clickable) {
+  if (
+    e.target.dataset.clickable === "true" &&
+    e.target != gameData.dataCardFlip.firstCard.cardLocator
+  ) {
     let cls = e.target.dataset.cls;
     let card = e.target;
-    let id = e.target.dataset.id;
-    console.log(card);
     switch (gameData.dataCardFlip.count) {
       case 0:
         card.classList.toggle(cls);
         gameData.dataCardFlip.count += 1;
-        gameData.dataCardFlip.firstCard.cardId = id;
         gameData.dataCardFlip.firstCard.cardClass = cls;
         gameData.dataCardFlip.firstCard.cardLocator = card;
         break;
       case 1:
         card.classList.toggle(cls);
         gameData.dataCardFlip.count += 1;
-        gameData.dataCardFlip.secondCard.cardId = id;
         gameData.dataCardFlip.secondCard.cardClass = cls;
         gameData.dataCardFlip.secondCard.cardLocator = card;
-        boardSelector.style["z-index"] = "-20";
-        setTimeout(() => {
-          boardSelector.style["z-index"] = "10";
-        }, 2000);
         if (
-          gameData.dataCardFlip.firstCard.cardId ==
-          gameData.dataCardFlip.secondCard.cardId
+          gameData.dataCardFlip.firstCard.cardClass ==
+          gameData.dataCardFlip.secondCard.cardClass
         ) {
-          gameData.dataCardFlip.firstCard.cardLocator.dataset.clickablestyle = false;
-          gameData.dataCardFlip.secondCard.cardLocator.dataset.clickablestyle = false;
+          gameData.dataCardFlip.firstCard.cardLocator.dataset.clickable =
+            "false";
+          gameData.dataCardFlip.secondCard.cardLocator.dataset.clickable =
+            "false";
           gameData.dataRight += 1;
-          if (true) {
-            // if game is won
+          if (gameData.dataRight == gameData.dataDeckSize) {
+            console.log("game won");
+            //TODO add ending
           }
         } else {
-          //no metch
+          gameData.dataWrong += 1;
+          setTimeout(() => {
+            let c1 = gameData.dataCardFlip.firstCard.cardClass;
+            gameData.dataCardFlip.firstCard.cardLocator.classList.toggle(c1);
+            let c2 = gameData.dataCardFlip.secondCard.cardClass;
+            gameData.dataCardFlip.secondCard.cardLocator.classList.toggle(c2);
+            boardSelector.style["z-index"] = "10";
+          }, 2000);
+          boardSelector.style["z-index"] = "-20";
         }
-        console.log(gameData);
-        break;
-      default:
-        console.log(e.target);
+        setTimeout(() => {
+          gameData.dataCardFlip.count = 0;
+          gameData.dataCardFlip.secondCard.cardClass = undefined;
+          gameData.dataCardFlip.secondCard.cardLocator = undefined;
+          gameData.dataCardFlip.secondCard.cardClass = undefined;
+          gameData.dataCardFlip.secondCard.cardLocator = undefined;
+        }, 2000);
     }
   }
 }
