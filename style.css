@@ -43,8 +43,14 @@ body {
 .timer {
   grid-area: timer;
   background-color: yellowgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   grid-area: counter;
   background-color: red;
 }
@@ -58,8 +64,11 @@ body {
   height: 100px;
   width: 100px;
   margin: 1rem;
-  background-color: black;
-  background-image: red;
+  background-size: cover;
+}
+.card-back {
+  background-image: url("./image/png/day10-canvas-stand.png");
+  background-size: cover;
 }
 
 /* ***************************************************************
@@ -93,3 +102,27 @@ body {
 .btn:active {
   transform: scale(0.99);
 }
+/* ***************************************************************
+  card smile classes
+******************************************************************/
+.smile1 {
+  background-image: url("./image/smile/smile1.png");
+}
+.smile2 {
+  background-image: url("./image/smile/smile2.png");
+}
+.smile3 {
+  background-image: url("./image/smile/smile3.png");
+}
+.smile4 {
+  background-image: url("./image/smile/smile4.png");
+}
+.smile5 {
+  background-image: url("./image/smile/smile5.png");
+}
+.smile6 {
+  background-image: url("./image/smile/smile6.png");
+}
+/* ***************************************************************
+  card ? classes
+******************************************************************/

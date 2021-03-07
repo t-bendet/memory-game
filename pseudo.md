@@ -9,7 +9,7 @@
 
 ### game in play
 
-- [ ] The board size should be 3\*4; The cards should be dealt in random, every card has a match
+- [x] The board size should be 3\*4; The cards should be dealt in random, every card has a match
 - [ ] After flipping two cards with different images, the game should pause for a second. During that second, the other cards are not clickable.
 - [ ] Add a number of wrong guesses counter.
 - [ ] Add a timer.
