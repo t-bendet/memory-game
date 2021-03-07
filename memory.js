@@ -25,6 +25,40 @@ const gameData = {
 };
 const gameThemes = {
   smileTheme: ["smile1", "smile2", "smile3", "smile4", "smile5", "smile6"],
+  covidTheme: [
+    "covid1",
+    "covid2",
+    "covid3",
+    "covid4",
+    "covid5",
+    "covid6",
+    "covid7",
+    "covid8",
+    "covid9",
+    "covid10",
+  ],
+  randomTheme: [
+    "random1",
+    "random2",
+    "random3",
+    "random4",
+    "random5",
+    "random6",
+    "random7",
+    "random8",
+    "random9",
+    "random10",
+    "random11",
+    "random12",
+    "random13",
+    "random14",
+    "random15",
+    "random16",
+    "random17",
+    "random18",
+    "random19",
+    "random20",
+  ],
 };
 // each btn contains the data about the game//
 startMenu.addEventListener("click", gameOptions);
@@ -53,10 +87,8 @@ function initGameBoard(num, deckTheme) {
   gameSelector.style.gap = "1rem";
   gameSelector.style["grid-template-rows"] = "150px 1fr";
   gameData.dataDeckSize = deck.length / 2;
-  initGamePlay(gameData);
-  // return deck;
-  //TODO timerSelector init
-  //TODO countrSelector init
+  countrSelector.innerText = "failed attempts : 0";
+  timerCycle();
 }
 
 //randomized array of card objects with matching id's and class for image background
@@ -80,7 +112,6 @@ function randomizeCardData(setNumber, setTheme) {
   return cardsArr;
 }
 // game in play //
-function initGamePlay(gameData) {}
 
 boardSelector.addEventListener("click", cardListner);
 function cardListner(e) {
@@ -102,6 +133,7 @@ function cardListner(e) {
         gameData.dataCardFlip.count += 1;
         gameData.dataCardFlip.secondCard.cardClass = cls;
         gameData.dataCardFlip.secondCard.cardLocator = card;
+
         if (
           gameData.dataCardFlip.firstCard.cardClass ==
           gameData.dataCardFlip.secondCard.cardClass
@@ -112,8 +144,8 @@ function cardListner(e) {
             "false";
           gameData.dataRight += 1;
           if (gameData.dataRight == gameData.dataDeckSize) {
-            console.log("game won");
-            //TODO add ending
+            stoptime = false;
+            // TODO add win
           }
         } else {
           gameData.dataWrong += 1;
@@ -123,16 +155,43 @@ function cardListner(e) {
             let c2 = gameData.dataCardFlip.secondCard.cardClass;
             gameData.dataCardFlip.secondCard.cardLocator.classList.toggle(c2);
             boardSelector.style["z-index"] = "10";
-          }, 2000);
+            gameData.dataCardFlip.count = 0;
+            gameData.dataCardFlip.secondCard.cardClass = undefined;
+            gameData.dataCardFlip.secondCard.cardLocator = undefined;
+            gameData.dataCardFlip.secondCard.cardClass = undefined;
+            gameData.dataCardFlip.secondCard.cardLocator = undefined;
+          }, 1500);
           boardSelector.style["z-index"] = "-20";
         }
-        setTimeout(() => {
-          gameData.dataCardFlip.count = 0;
-          gameData.dataCardFlip.secondCard.cardClass = undefined;
-          gameData.dataCardFlip.secondCard.cardLocator = undefined;
-          gameData.dataCardFlip.secondCard.cardClass = undefined;
-          gameData.dataCardFlip.secondCard.cardLocator = undefined;
-        }, 2000);
     }
+  }
+  countrSelector.innerText = `failed attempts : ${gameData.dataWrong}`;
+}
+let h = 00;
+let m = 0;
+let s = 0;
+let stoptime = true;
+
+function timerCycle() {
+  if (stoptime) {
+    s = parseInt(s);
+    m = parseInt(m);
+    h = parseInt(h);
+    s = s + 1;
+    if (s == 60) {
+      m = m + 1;
+      s = 0;
+    }
+    if (s < 10 || s == 0) {
+      s = "0" + s;
+    }
+    if (m < 10 || m == 0) {
+      m = "0" + m;
+    }
+    if (h < 10 || h == 0) {
+      h = "0" + h;
+    }
+    timerSelector.innerHTML = `${h}:${m}:${s}`;
+    setTimeout("timerCycle()", 1000);
   }
 }

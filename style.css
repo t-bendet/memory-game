@@ -41,7 +41,6 @@ body {
 }
 .timer {
   grid-area: timer;
-  background-color: yellowgreen;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,11 +50,12 @@ body {
   justify-content: center;
   align-items: center;
   grid-area: counter;
-  background-color: red;
 }
 .board {
   grid-area: board;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
@@ -82,7 +82,8 @@ body {
   text-decoration: none;
   background: rgb(2, 0, 36);
   color: #ffffff;
-  font-size: 0.75rem;
+  font-size: 2rem;
+  margin: 4rem;
   cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;
@@ -123,5 +124,133 @@ body {
   background-image: url("./image/smile/smile6.png");
 }
 /* ***************************************************************
-  card ? classes
+  card covid classes
 ******************************************************************/
+.covid1 {
+  background-image: url("./image/covid/covid1.png");
+}
+.covid2 {
+  background-image: url("./image/covid/covid2.png");
+}
+.covid3 {
+  background-image: url("./image/covid/covid3.png");
+}
+.covid4 {
+  background-image: url("./image/covid/covid4.png");
+}
+.covid5 {
+  background-image: ("./image/covid/covid5.png");
+}
+.covid6 {
+  background-image: ("./image/covid/covid6.png");
+}
+.covid7 {
+  background-image: url("./image/covid/covid7.png");
+}
+.covid8 {
+  background-image: url("./image/covid/covid8.png");
+}
+.covid9 {
+  background-image: ("./image/covid/covid9.png");
+}
+.covid10 {
+  background-image: ("./image/covid/covid10.png");
+}
+
+/* ***************************************************************
+  card covid classes
+******************************************************************/
+.covid1 {
+  background-image: url("./image/covid/covid1.png");
+}
+.covid2 {
+  background-image: url("./image/covid/covid2.png");
+}
+.covid3 {
+  background-image: url("./image/covid/covid3.png");
+}
+.covid4 {
+  background-image: url("./image/covid/covid4.png");
+}
+.covid5 {
+  background-image: ("./image/covid/covid5.png");
+}
+.covid6 {
+  background-image: ("./image/covid/covid6.png");
+}
+.covid7 {
+  background-image: url("./image/covid/covid7.png");
+}
+.covid8 {
+  background-image: url("./image/covid/covid8.png");
+}
+.covid9 {
+  background-image: ("./image/covid/covid9.png");
+}
+.covid10 {
+  background-image: ("./image/covid/covid10.png");
+}
+
+/* ***************************************************************
+  card randome classes
+******************************************************************/
+.random1 {
+  background-image: url("./image/random/random1.png");
+}
+.random2 {
+  background-image: url("./image/random/random2.png");
+}
+.random3 {
+  background-image: url("./image/random/random3.png");
+}
+.random4 {
+  background-image: url("./image/random/random4.png");
+}
+.random5 {
+  background-image: ("./image/random/random5.png");
+}
+.random6 {
+  background-image: ("./image/random/random6.png");
+}
+.random7 {
+  background-image: url("./image/random/random7.png");
+}
+.random8 {
+  background-image: url("./image/random/random8.png");
+}
+.random9 {
+  background-image: ("./image/random/random9.png");
+}
+.random10 {
+  background-image: ("./image/random/random10.png");
+}
+.random11 {
+  background-image: url("./image/random/random11.png");
+}
+.random12 {
+  background-image: url("./image/random/random12.png");
+}
+.random13 {
+  background-image: url("./image/random/random13.png");
+}
+.random14 {
+  background-image: url("./image/random/random14.png");
+}
+.random15 {
+  background-image: ("./image/random/random15.png");
+}
+.random16 {
+  background-image: ("./image/random/random16.png");
+}
+.random17 {
+  background-image: url("./image/random/random17.png");
+}
+.random18 {
+  background-image: url("./image/random/random18.png");
+}
+.random19 {
+  background-image: ("./image/random/random19.png");
+}
+.random20 {
+  background-image: ("./image/random/random20.png");
+}
