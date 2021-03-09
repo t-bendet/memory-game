@@ -14,12 +14,12 @@ const gameData = {
   dataCardFlip: {
     count: 0,
     firstCard: {
-      cardClass: undefined,
-      cardLocator: undefined,
+      cardClass: null,
+      cardLocator: null,
     },
     secondCard: {
-      cardClass: undefined,
-      cardLocator: undefined,
+      cardClass: null,
+      cardLocator: null,
     },
   },
 };
@@ -88,7 +88,7 @@ function initGameBoard(num, deckTheme) {
   gameSelector.style["grid-template-rows"] = "150px 1fr";
   gameData.dataDeckSize = deck.length / 2;
   countrSelector.innerText = "failed attempts : 0";
-  timerCycle();
+  // timerCycle();
 }
 
 //randomized array of card objects with matching id's and class for image background
@@ -130,7 +130,7 @@ function cardListner(e) {
         break;
       case 1:
         card.classList.toggle(cls);
-        gameData.dataCardFlip.count += 1;
+        gameData.dataCardFlip.count = 0;
         gameData.dataCardFlip.secondCard.cardClass = cls;
         gameData.dataCardFlip.secondCard.cardLocator = card;
 
@@ -143,55 +143,64 @@ function cardListner(e) {
           gameData.dataCardFlip.secondCard.cardLocator.dataset.clickable =
             "false";
           gameData.dataRight += 1;
-          if (gameData.dataRight == gameData.dataDeckSize) {
+          if (gameData.dataRight === gameData.dataDeckSize) {
             stoptime = false;
             // TODO add win
+            alert("you won!");
           }
         } else {
           gameData.dataWrong += 1;
           setTimeout(() => {
+            console.log("heloooooooooooooooooooo");
             let c1 = gameData.dataCardFlip.firstCard.cardClass;
             gameData.dataCardFlip.firstCard.cardLocator.classList.toggle(c1);
             let c2 = gameData.dataCardFlip.secondCard.cardClass;
             gameData.dataCardFlip.secondCard.cardLocator.classList.toggle(c2);
-            boardSelector.style["z-index"] = "10";
-            gameData.dataCardFlip.count = 0;
-            gameData.dataCardFlip.secondCard.cardClass = undefined;
-            gameData.dataCardFlip.secondCard.cardLocator = undefined;
-            gameData.dataCardFlip.secondCard.cardClass = undefined;
-            gameData.dataCardFlip.secondCard.cardLocator = undefined;
-          }, 1500);
-          boardSelector.style["z-index"] = "-20";
+
+            // boardSelector.style["z-index"] = "10";
+          }, 500);
         }
+
+      // setTimeout(() => {
+      //   gameData.dataCardFlip.count = 0;
+      //   // gameData.dataCardFlip.secondCard.cardClass = undefined;
+      //   // gameData.dataCardFlip.secondCard.cardLocator = undefined;
+      //   // gameData.dataCardFlip.secondCard.cardClass = undefined;
+      //   // gameData.dataCardFlip.secondCard.cardLocator = undefined;
+      //   // boardSelector.style["z-index"] = "10";
+      // }, 1000);
+
+      // boardSelector.style["z-index"] = "-20";
     }
   }
+  gameData.dataCardFlip.count = 0;
   countrSelector.innerText = `failed attempts : ${gameData.dataWrong}`;
 }
-let h = 00;
-let m = 0;
-let s = 0;
-let stoptime = true;
+// let h = 00;
+// let m = 0;
+// let s = 0;
+// let stoptime = true;
 
-function timerCycle() {
-  if (stoptime) {
-    s = parseInt(s);
-    m = parseInt(m);
-    h = parseInt(h);
-    s = s + 1;
-    if (s == 60) {
-      m = m + 1;
-      s = 0;
-    }
-    if (s < 10 || s == 0) {
-      s = "0" + s;
-    }
-    if (m < 10 || m == 0) {
-      m = "0" + m;
-    }
-    if (h < 10 || h == 0) {
-      h = "0" + h;
-    }
-    timerSelector.innerHTML = `${h}:${m}:${s}`;
-    setTimeout("timerCycle()", 1000);
-  }
-}
+// function timerCycle() {
+//   if (stoptime) {
+//     s = parseInt(s);
+//     m = parseInt(m);
+//     h = parseInt(h);
+//     s = s + 1;
+//     if (s == 60) {
+//       m = m + 1;
+//       s = 0;
+//     }
+//     if (s < 10 || s == 0) {
+//       s = "0" + s;
+//     }
+//     if (m < 10 || m == 0) {
+//       m = "0" + m;
+//     }
+//     if (h < 10 || h == 0) {
+//       h = "0" + h;
+//     }
+//     timerSelector.innerHTML = `${h}:${m}:${s}`;
+//     setTimeout("timerCycle()", 1000);
+//   }
+// }
